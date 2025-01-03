@@ -34,7 +34,20 @@ return {
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            mapping = cmp.mapping.preset.insert({
+            -- mapping = cmp.mapping.preset.insert({
+            --     ['<C-k>'] = cmp.mapping.select_prev_item(), -- previous suggestion
+            --     ['<C-j>'] = cmp.mapping.select_next_item(), -- next suggestion
+            --     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            --     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            --     ['<C-Space>'] = cmp.mapping.complete(), -- show completion suggestions
+            --     ['<C-e>'] = cmp.mapping.abort(), -- close completion window
+            --     ['<CR>'] = cmp.mapping.confirm({ select = false }),
+            --     ['<Tab>'] = cmp.mapping.select_next_item(),
+            --     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+            -- }),
+            -- To remove UP and DOWN annoyance
+            -- https://www.reddit.com/r/neovim/comments/10r7l63/how_to_stop_nvimcmp_from_using_my_arrow_keys/?rdt=47627
+            mapping = cmp.mapping({
                 ['<C-k>'] = cmp.mapping.select_prev_item(), -- previous suggestion
                 ['<C-j>'] = cmp.mapping.select_next_item(), -- next suggestion
                 ['<C-b>'] = cmp.mapping.scroll_docs(-4),
