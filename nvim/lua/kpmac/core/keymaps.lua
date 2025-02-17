@@ -9,10 +9,11 @@ local keymap = vim.keymap   -- for conciseness
 
 -- Hint: See `:h vim.map.set()`
 -- Better window navigation
-keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move cursor to the left window' })     -- C denotes control key
-keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move cursor to the bottom window' })
-keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move cursor to the top window' })
-keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move cursor to the right window' })
+-- Commenting because this does not work well with vim_tmux_navigator (in fedora setup, works fine in macos setup), installing vim_tmux_navigator plugin with Lazy instead
+-- keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move cursor to the left window' })     -- C denotes control key
+-- keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move cursor to the bottom window' })
+-- keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move cursor to the top window' })
+-- keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move cursor to the right window' })
 
 -- Resize with arrows
 -- delta: 2 lines
