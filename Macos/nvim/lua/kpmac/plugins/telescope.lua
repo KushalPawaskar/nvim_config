@@ -21,6 +21,11 @@ return {
                     },
                 },
             },
+            pickers = {
+                find_files = {
+                    find_command = { "rg", "--files", "--hidden", "-g", "!.git" },      -- to show hidden files as well excluding the ones in .git
+                },
+            },
         })
 
         telescope.load_extension("fzf")
