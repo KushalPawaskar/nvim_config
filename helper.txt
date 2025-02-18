@@ -57,6 +57,10 @@ To make a directory the present working directory, press cd in netrw (not :cd) i
 <space>-ss to incrementally select (e.g. word → line → block → ..)
 <bs> (backspace) to decrement selections in reverse order
 
+•Folds
+set foldmethod=...      (syntax/indent usually does the job, can use expr with treesitter)
+z[o/O/c/C/m/M/r/R]      (check description with which-key)
+
 •Commenting
 gcc to comment current line
 gc (in visual mode) to comment selected lines
