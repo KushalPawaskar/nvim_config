@@ -80,6 +80,14 @@ gf: Go to file under cursor (opens in same window)
 <Tab> to select a result
 <C-q> to send selections to quick fix list and open quick fix list
 
+•File information:
+<C-g>: Shows filename, number of lines, and percentage file covered from top
+0<C-g>: Same as above
+1<C-g>: Same as above but with full filepath instead of just filename
+2<C-g>: Same as above but with buffer number
+g<C-g>: Shows cursor position and word, character, byte statistics
+
+
 
 ---------------------Old (Packer + mason)----------------------------
 
