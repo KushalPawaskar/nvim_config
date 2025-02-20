@@ -79,6 +79,7 @@ gf: Go to file under cursor (opens in same window)
 <C-jk> to go through results
 <Tab> to select a result
 <C-q> to send selections to quick fix list and open quick fix list
+<C-/> to see insert mode key bindings
 
 •File information:
 <C-g>: Shows path from current working directory, number of lines, and percentage file covered from top
