@@ -76,6 +76,7 @@ gf: Go to file under cursor (opens in same window)
 <space>fr to fuzzy find recent files
 <space>fs to fuzzy find string in cwd
 <space>fc to fuzzy find string under cursor in cwd
+<space>fb to fuzzy find open buffers (sorted by most recently used)
 <C-jk> to go through results
 <Tab> to select a result
 <C-q> to send selections to quick fix list and open quick fix list
