@@ -52,6 +52,8 @@ To make a directory the present working directory, press cd in netrw (not :cd) i
 :%s/pattern_to_be_found/pattern_that_replaces_it/       (replaces the first occurence of the found pattern on each line)
 :%s/pattern_to_be_found/pattern_that_replaces_it/g      (replaces all occurences of the found pattern on each line)
 :%s/pattern_to_be_found//gn                             (counts the occurences of the found pattern)
+*Ncgn                                                   (select text in visual mode (optional); * will search for next matching pattern and highlight all matching patterns; N to go back to original pattern; cgn will delete selection, enable insert mode, g stands for all, n stands for next which will be useful during . command later; type replacement, esc, press .)
+/{pattern}cgn                                           (same as above but search for pattern explicitly)
 
 •Incremental selection (nvim-treesitter)
 <space>-ss to incrementally select (e.g. word → line → block → ..)
