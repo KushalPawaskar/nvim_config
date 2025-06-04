@@ -19,8 +19,10 @@ local keymap = vim.keymap   -- for conciseness
 -- delta: 2 lines
 keymap.set('n', '<A-Up>', ':resize -2<CR>', { desc = 'Decrease window size vertically' })   -- A denotes option key
 keymap.set('n', '<A-Down>', ':resize +2<CR>', { desc = 'Increase window size vertically' })
-keymap.set('n', '<A-Left>', ':vertical resize -2<CR>', { desc = 'Decrease window size horizontally' })
-keymap.set('n', '<A-Right>', ':vertical resize +2<CR>', { desc = 'Increase window size horizontally' })
+-- keymap.set('n', '<A-Left>', ':vertical resize -2<CR>', { desc = 'Decrease window size horizontally' })   -- <A-Left> has been mapped to ^[ b, which is <M-b> for backward-word, in iterm profile settings; it cannot be overridden from nvim
+keymap.set('n', '<M-b>', ':vertical resize -2<CR>', { desc = 'Decrease window size horizontally' })
+-- keymap.set('n', '<A-Right>', ':vertical resize +2<CR>', { desc = 'Increase window size horizontally' })   -- <A-Right> has been mapped to ^[ f, which is <M-f> for forward-word, in iterm profile settings; it cannot be overridden from nvim
+keymap.set('n', '<M-f>', ':vertical resize +2<CR>', { desc = 'Increase window size horizontally' })
 
 -- Change tabs
 keymap.set('n', '<C-S-Right>', 'gt', { desc = 'Go to next tab' })           -- D denotes command key

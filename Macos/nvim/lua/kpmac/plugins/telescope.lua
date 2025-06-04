@@ -1,5 +1,5 @@
 return {
-    "nvim-telescope/telescope.nvim",
+    "nvim-telescope/telescope.nvim",        -- make sure that ripgrep is installed (brew)
     dependencies = {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
