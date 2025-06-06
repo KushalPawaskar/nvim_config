@@ -13,7 +13,7 @@ return {
             })
 
             -- load the colorscheme
-            vim.cmd("colorscheme gruvbox")
+            -- vim.cmd("colorscheme gruvbox")
         end
     },
     {
@@ -61,6 +61,24 @@ return {
 
             -- load the colorscheme
             -- vim.cmd("colorscheme catppuccin-mocha")
+        end
+    },
+    {
+        "oxfist/night-owl.nvim",
+        -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        name = "nightowl",
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            -- load the colorscheme
+            -- vim.cmd.colorscheme("nightowl")
+        end
+    },
+    {
+        "yorumicolors/yorumi.nvim",
+        priority = 1000,
+        config = function ()
+            -- load the colorscheme
+            vim.cmd.colorscheme("yorumi")
         end
     },
     -- {
