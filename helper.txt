@@ -42,8 +42,9 @@ Similarly for $/g$ or 0/g0
 <C-a> to increase number under the cursor in normal mode
 <C-x> to decrease number under the cursor in normal mode
 
-•LSP shortcuts:
+•LSP:
 Check ~/.config/nvim/lua/lsp.lua for various keyboard shortcuts. e.g. <space>ca for code actions, <space>e for diagnostics
+To make pylsp show completions for libraries installed in a virtual environment, activate the virtual environment before starting nvim, i.e. in the same terminal window
 
 •Directory (netrw)
 To make a directory the present working directory, press cd in netrw (not :cd) in the required directory (not required anymore since g:netrw_keepdir = 0 takes care of this)

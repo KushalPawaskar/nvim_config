@@ -102,6 +102,9 @@ return {
                                     },
                                     maxLineLength = 120
                                 },
+                                jedi_completion = {
+                                    fuzzy = true,
+                                },
                             },
                         },
                     },
