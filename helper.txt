@@ -89,6 +89,13 @@ gf: Go to file under cursor (opens in same window)
 <C-q> to send selections to quick fix list and open quick fix list
 <C-/> to see insert mode key bindings
 
+•Multicursors
+<M-n> to add cursor and move to next match
+<M-N> to move to next match skipping current
+<M-q> to toggle cursor at current location (press esc after placing all the cursors to enable them, esc again to get rid of multiple cursors)
+<up> to place cursor and move above (preceed with <space> to skip current)
+<down> to place cursor and move below (preceed with <space> to skip current)
+
 •File information
 <C-g>: Shows path from current working directory, number of lines, and percentage file covered from top
 1<C-g>: Same as above but with full filepath instead
