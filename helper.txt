@@ -30,6 +30,9 @@ j/k will navigate through real lines (rows) in vim
 gj/gk can be used to navigate through displayed lines (rows)
 Similarly for $/g$ or 0/g0
 
+•Visual mode
+After yanking cursor goes to the topmost line of the yanked text. Press '] to go to the bottommost line of the previously yanked text, '[ to go to the topmost line
+
 •Scrolling: (normal mode)
 <C-y> moves screen up one line
 <C-e> moves screen down one line
@@ -69,23 +72,24 @@ gcc to comment current line
 gc (in visual mode) to comment selected lines
 gc (followed by vim motion e.g. 3j to comment current line and next 3 lines)
 
-•Inter-file navigation:
+•Inter-file navigation
 gf: Go to file under cursor (opens in same window)
 <C-w> f: Go to file under cursor (opens in a horizontal split)
 <C-w> gf: Go to file under cursor (opens in a new tab)
 
-•Fuzzy finder (telescope):
+•Fuzzy finder (telescope)
 <space>ff to fuzzy find files in cwd
 <space>fr to fuzzy find recent files
 <space>fs to fuzzy find string in cwd
 <space>fc to fuzzy find string under cursor in cwd
 <space>fb to fuzzy find open buffers (sorted by most recently used)
+<space>cs to see colorschemes (also the ones that aren't loaded)
 <C-jk> to go through results
 <Tab> to select a result
 <C-q> to send selections to quick fix list and open quick fix list
 <C-/> to see insert mode key bindings
 
-•File information:
+•File information
 <C-g>: Shows path from current working directory, number of lines, and percentage file covered from top
 1<C-g>: Same as above but with full filepath instead
 2<C-g>: Same as above but with buffer number

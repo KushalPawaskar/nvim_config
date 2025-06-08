@@ -48,7 +48,10 @@ return {
                 keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- smart rename
 
                 opts.desc = 'Show buffer diagnostics'
-                keymap.set('n', '<leader>E', vim.diagnostic.show, opts) -- show  diagnostics for file
+                keymap.set('n', '<leader>Es', vim.diagnostic.show, opts) -- show diagnostics for file
+
+                opts.desc = 'Hide buffer diagnostics'
+                keymap.set('n', '<leader>Eh', vim.diagnostic.hide, opts) -- hide diagnostics for file
 
                 opts.desc = 'Show line diagnostics'
                 keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -74,12 +77,29 @@ return {
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
         -- Change the Diagnostic symbols in the sign column (gutter)
-        -- (not in youtube nvim video)
-        local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
-        for type, icon in pairs(signs) do
-            local hl = 'DiagnosticSign' .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-        end
+        -- local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
+        -- for type, icon in pairs(signs) do
+        --     local hl = 'DiagnosticSign' .. type
+        --     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })        -- deprecated
+        -- end
+
+        vim.diagnostic.config({
+            virtual_text = false,    -- false by default
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = ' ',
+                    [vim.diagnostic.severity.WARN] = ' ',
+                    [vim.diagnostic.severity.HINT] = '󰠠 ',
+                    [vim.diagnostic.severity.INFO] = ' ',
+                },
+                texthl = {
+                    [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+                    [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+                    [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+                    [vim.diagnostic.severity.INFO] = 'DiagnosticSigninfo',
+                },
+            },
+        })
 
         mason_lspconfig.setup_handlers({
             -- default handler for installed servers
@@ -100,7 +120,7 @@ return {
                                         'W291',     -- trailing whitespace (whitespace after final character of a line)
                                         'W293',     -- blank line contains whitespace
                                     },
-                                    maxLineLength = 120
+                                    maxLineLength = 360
                                 },
                                 jedi_completion = {
                                     fuzzy = true,

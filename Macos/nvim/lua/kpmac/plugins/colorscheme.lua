@@ -1,7 +1,8 @@
 return {
     {
         'ellisonleao/gruvbox.nvim',
-        priority = 1000,
+        lazy = true,       -- keeping this false for colorschemes not in use will increase startup time but if its true then the plugin won't even be loaded directly, i.e. it won't be available in :colorscheme. :Telescope colorscheme would have to be done to load it
+        priority = 1000,    -- make sure to load this before all the other start plugins (works only when lazy = false)
         config = function ()
             -- import gruvbox
             local gruvbox = require("gruvbox")
@@ -17,73 +18,49 @@ return {
         end
     },
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function ()
-            -- import catppuccin
-            local catppuccin = require("catppuccin")
-
-            -- configure the colorscheme
-            catppuccin.setup({
-                transparent_background = false,
-                color_overrides = {
-                    mocha = {
-                        rosewater = "#ffc0b9",
-                        flamingo = "#f5aba3",
-                        pink = "#f592d6",
-                        mauve = "#c0afff",
-                        red = "#ea746c",
-                        maroon = "#ff8595",
-                        peach = "#fa9a6d",
-                        yellow = "#ffe081",
-                        green = "#99d783",
-                        teal = "#47deb4",
-                        sky = "#00d5ed",
-                        sapphire = "#00dfce",
-                        blue = "#00baee",
-                        lavender = "#abbff3",
-                        text = "#cccccc",
-                        subtext1 = "#bbbbbb",
-                        subtext0 = "#aaaaaa",
-                        overlay2 = "#999999",
-                        overlay1 = "#888888",
-                        overlay0 = "#777777",
-                        surface2 = "#666666",
-                        surface1 = "#555555",
-                        surface0 = "#444444",
-                        base = "#202020",
-                        mantle = "#222222",
-                        crust = "#333333",
-                    },
-                },
-            })
-
-            -- load the colorscheme
-            -- vim.cmd("colorscheme catppuccin-mocha")
-        end
-    },
-    {
         "oxfist/night-owl.nvim",
-        -- lazy = false, -- make sure we load this during startup if it is your main colorscheme
         name = "nightowl",
-        priority = 1000, -- make sure to load this before all the other start plugins
+        lazy = true,       -- keeping this false for colorschemes not in use will increase startup time but if its true then the plugin won't even be loaded directly, i.e. it won't be available in :colorscheme. :Telescope colorscheme would have to be done to load it
+        priority = 1000,    -- make sure to load this before all the other start plugins (works only when lazy = false)
         config = function()
             -- load the colorscheme
-            -- vim.cmd.colorscheme("nightowl")
+            -- vim.cmd.colorscheme("night-owl")
         end
     },
     {
         "yorumicolors/yorumi.nvim",
-        priority = 1000,
+        lazy = false,       -- keeping this false for colorschemes not in use will increase startup time but if its true then the plugin won't even be loaded directly, i.e. it won't be available in :colorscheme. :Telescope colorscheme would have to be done to load it
+        priority = 1000,    -- make sure to load this before all the other start plugins (works only when lazy = false)
         config = function ()
             -- load the colorscheme
-            vim.cmd.colorscheme("yorumi")
+            -- vim.cmd.colorscheme("yorumi-abyss")
+        end
+    },
+    {
+        "ribru17/bamboo.nvim",
+        lazy = false,       -- keeping this false for colorschemes not in use will increase startup time but if its true then the plugin won't even be loaded directly, i.e. it won't be available in :colorscheme. :Telescope colorscheme would have to be done to load it
+        priority = 1000,    -- make sure to load this before all the other start plugins (works only when lazy = false)
+        config = function ()
+            require("bamboo").setup()   -- giving errors without this line when loading multiplex or vulgaris variants
+
+            -- load the colorscheme
+            vim.cmd.colorscheme("bamboo-multiplex")
         end
     },
     -- {
+    --     "catppuccin/nvim",
+    --     name = "catppuccin",
+    --     lazy = true,       -- keeping this false for colorschemes not in use will increase startup time but if its true then the plugin won't even be loaded directly, i.e. it won't be available in :colorscheme. :Telescope colorscheme would have to be done to load it
+    --     priority = 1000,    -- make sure to load this before all the other start plugins (works only when lazy = false)
+    --     config = function ()
+    --         -- load the colorscheme
+    --         -- vim.cmd("colorscheme catppuccin-mocha")
+    --     end
+    -- },
+    -- {
     --     'rebelot/kanagawa.nvim',
-    --     priority = 1000,            -- to make this plugin load before all the other start plugins
+    --     lazy = true,       -- keeping this false for colorschemes not in use will increase startup time but if its true then the plugin won't even be loaded directly, i.e. it won't be available in :colorscheme. :Telescope colorscheme would have to be done to load it
+    --     priority = 1000,    -- make sure to load this before all the other start plugins (works only when lazy = false)
     --     config = function()
     --         -- load the colorscheme here
     --         vim.cmd('colorscheme kanagawa-wave')

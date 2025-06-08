@@ -41,6 +41,7 @@ return {
         keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
         keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
+        keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", { desc = "Show colorschemes" })    -- also shows colorschemes that are not loaded at startup due to lazy = true
 
     end
 }
