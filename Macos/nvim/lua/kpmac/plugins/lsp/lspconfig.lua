@@ -101,75 +101,138 @@ return {
             },
         })
 
-        mason_lspconfig.setup_handlers({
-            -- default handler for installed servers
-            function(server_name)
-                lspconfig[server_name].setup({
-                    capabilities = capabilities,
-                })
-            end,
-            ['pylsp'] = function()
-                -- configure python server
-                lspconfig['pylsp'].setup({
-                    capabilities = capabilities,
-                    settings = {
-                        pylsp = {
-                            plugins = {
-                                pycodestyle = {
-                                    ignore = {      -- https://www.flake8rules.com
-                                        'W291',     -- trailing whitespace (whitespace after final character of a line)
-                                        'W293',     -- blank line contains whitespace
-                                    },
-                                    maxLineLength = 360
-                                },
-                                jedi_completion = {
-                                    fuzzy = true,
-                                },
+        -- mason_lspconfig.setup_handlers({                 -- setup_handlers deprecated from mason version 2.0
+        --     -- default handler for installed servers
+        --     function(server_name)
+        --         lspconfig[server_name].setup({
+        --             capabilities = capabilities,
+        --         })
+        --     end,
+        --     ['pylsp'] = function()
+        --         -- configure python server
+        --         lspconfig['pylsp'].setup({
+        --             capabilities = capabilities,
+        --             settings = {
+        --                 pylsp = {
+        --                     plugins = {
+        --                         pycodestyle = {
+        --                             ignore = {      -- https://www.flake8rules.com
+        --                                 'W291',     -- trailing whitespace (whitespace after final character of a line)
+        --                                 'W293',     -- blank line contains whitespace
+        --                             },
+        --                             maxLineLength = 360
+        --                         },
+        --                         jedi_completion = {
+        --                             fuzzy = true,
+        --                         },
+        --                     },
+        --                 },
+        --             },
+        --         })
+        --     end,
+        --     ['lua_ls'] = function()
+        --         -- configure lua server (with special settings)
+        --         lspconfig['lua_ls'].setup({
+        --             capabilities = capabilities,
+        --             settings = {
+        --                 Lua = {
+        --                     -- make the language server recognize 'vim' global
+        --                     diagnostics = {
+        --                         globals = { 'vim' },
+        --                     },
+        --                     completion = {
+        --                         callSnippet = 'Replace',
+        --                     },
+        --                     runtime = {
+        --                         -- tell the language server which version of Lua you are using (most likely LuaJIT in the case of neovim)
+        --                         version = 'LuaJIT',
+        --                     },
+        --                     workspace = {
+        --                         -- make the server aware of neovim runtime files
+        --                         library = vim.api.nvim_get_runtime_file('', true),
+        --                     },
+        --                     telemetry = {
+        --                         -- do not send telemetry containing a randomized but unique identifier
+        --                         enable = false,
+        --                     },
+        --                 },
+        --             },
+        --         })
+        --     end,
+        --     ['clangd'] = function()
+        --         -- configure clang server with special settings
+        --         -- When Packer was used: Do not add clangd in ensure_installed{}, clangd is already installed in /Library/Developer/CommandLineTools/usr/bin/clangd. Mason will install at a different location and then you will have to take care of all issues involving PATH of header files, namespace issues, etc.
+        --         -- But in Lazy, add clangd to ensure_installed{}, the system one doesn't get detected and the installed one is able to find everything nicely
+        --         lspconfig['clangd'].setup({
+        --             capabilities = capabilities,
+        --             init_options = {
+        --                 fallbackFlags = { '--std=c++17' },      -- https://www.reddit.com/r/neovim/comments/19f7s3r/how_do_i_get_my_lsp_clangd_to_use_a_specific/
+        --             },
+        --         })
+        --     end,
+        -- })
+
+        -- default config for installed servers
+        vim.lsp.config("*", {
+            -- on_attach = on_attach,      -- requires defining a function on_attach() but not required here because autocmd for LspAttach defined above
+            capabilities = capabilities,
+        })
+
+        -- configure python server
+        vim.lsp.config("pylsp", {
+            capabilities = capabilities,
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = {      -- https://www.flake8rules.com
+                                "W291",     -- trailing whitespace (whitespace after final character of a line)
+                                "W293",     -- blank line contains whitespace
                             },
+                            maxLineLength = 360
+                        },
+                        jedi_completion = {
+                            fuzzy = true,
                         },
                     },
-                })
-            end,
-            ['lua_ls'] = function()
-                -- configure lua server (with special settings)
-                lspconfig['lua_ls'].setup({
-                    capabilities = capabilities,
-                    settings = {
-                        Lua = {
-                            -- make the language server recognize 'vim' global
-                            diagnostics = {
-                                globals = { 'vim' },
-                            },
-                            completion = {
-                                callSnippet = 'Replace',
-                            },
-                            runtime = {
-                                -- tell the language server which version of Lua you are using (most likely LuaJIT in the case of neovim)
-                                version = 'LuaJIT',
-                            },
-                            workspace = {
-                                -- make the server aware of neovim runtime files
-                                library = vim.api.nvim_get_runtime_file('', true),
-                            },
-                            telemetry = {
-                                -- do not send telemetry containing a randomized but unique identifier
-                                enable = false,
-                            },
-                        },
+                },
+            },
+        })
+
+        -- configure lua server
+        vim.lsp.config("lua_ls", {
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    -- make the language server recognize 'vim' global
+                    diagnostics = {
+                        globals = { "vim" },
                     },
-                })
-            end,
-            ['clangd'] = function()
-                -- configure clang server with special settings
-                -- When Packer was used: Do not add clangd in ensure_installed{}, clangd is already installed in /Library/Developer/CommandLineTools/usr/bin/clangd. Mason will install at a different location and then you will have to take care of all issues involving PATH of header files, namespace issues, etc.
-                -- But in Lazy, add clangd to ensure_installed{}, the system one doesn't get detected and the installed one is able to find everything nicely
-                lspconfig['clangd'].setup({
-                    capabilities = capabilities,
-                    init_options = {
-                        fallbackFlags = { '--std=c++17' },      -- https://www.reddit.com/r/neovim/comments/19f7s3r/how_do_i_get_my_lsp_clangd_to_use_a_specific/
+                    completion = {
+                        callSnippet = "Replace",
                     },
-                })
-            end,
+                    runtime = {
+                        -- tell the language server which version of Lua you are using (most likely LuaJIT in the case of neovim)
+                        version = "LuaJIT",
+                    },
+                    workspace = {
+                        -- make the server aware of neovim runtime files
+                        library = vim.api.nvim_get_runtime_file("", true),
+                    },
+                    telemetry = {
+                        -- do not send telemetry containing a randomized but unique identifier
+                        enable = false,
+                    },
+                },
+            },
+        })
+
+        -- configure clang server
+        vim.lsp.config("clangd", {
+            capabilities = capabilities,
+            init_options = {
+                fallbackFlags = { "--std=c++17" },      -- https://www.reddit.com/r/neovim/comments/19f7s3r/how_do_i_get_my_lsp_clangd_to_use_a_specific/
+            },
         })
     end,
 }
