@@ -12,6 +12,7 @@ o opens file below in a horizontal split
 v opens file to the right in a vertical split
 t opens the file in a new tab
 <CR> opens the file in the same window as netrw
+x opens the file/directory in default app
 
 •Moving cursor across windows: <ctrl-w>{hjkl} or <ctrl-{hjkl}> in normal, <ctrl-\>{hjkl}
 
@@ -76,6 +77,7 @@ gc (followed by vim motion e.g. 3j to comment current line and next 3 lines)
 gf: Go to file under cursor (opens in same window)
 <C-w> f: Go to file under cursor (opens in a horizontal split)
 <C-w> gf: Go to file under cursor (opens in a new tab)
+gx: Open the directory of current file in default app
 
 •Fuzzy finder (telescope)
 <space>ff to fuzzy find files in cwd

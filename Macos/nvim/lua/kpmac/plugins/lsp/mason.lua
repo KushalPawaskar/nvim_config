@@ -1,8 +1,8 @@
 return {
     'williamboman/mason.nvim',
-    version = "^1.0.0",
+    -- version = "^1.0.0",
     dependencies = {
-        { 'williamboman/mason-lspconfig.nvim', version = "^1.0.0" },
+        { 'williamboman/mason-lspconfig.nvim' },
     },
     config = function()
         -- import mason
@@ -28,6 +28,7 @@ return {
                 'pylsp',
                 'lua_ls',
                 'clangd',
+                'texlab',
             },
         })
     end,

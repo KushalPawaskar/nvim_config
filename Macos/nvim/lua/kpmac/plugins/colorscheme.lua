@@ -44,7 +44,7 @@ return {
             require("bamboo").setup()   -- giving errors without this line when loading multiplex or vulgaris variants
 
             -- load the colorscheme
-            vim.cmd.colorscheme("bamboo-multiplex")
+            vim.cmd.colorscheme("bamboo-vulgaris")
         end
     },
     -- {
